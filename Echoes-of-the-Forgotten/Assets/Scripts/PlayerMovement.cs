@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public Transform orientation; 
 
     private CharacterController controller;
 
@@ -20,10 +21,9 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 inputDir = new Vector3(horizontal, 0f, vertical).normalized;
 
-        Vector3 rotatedDir = Quaternion.Euler(0f, -90f, 0f) * inputDir;
+        Vector3 moveDir = (orientation.forward * vertical + orientation.right * horizontal).normalized;
 
-        controller.Move(rotatedDir * moveSpeed * Time.deltaTime);
+        controller.Move(moveDir * moveSpeed * Time.deltaTime);
     }
 }
