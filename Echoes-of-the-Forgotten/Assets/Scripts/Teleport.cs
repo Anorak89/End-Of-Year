@@ -1,12 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class Teleport : MonoBehaviour
 {
+    public Vector3 targetPosition = new Vector3(0, 1, 0); // Change to desired spawn point
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("/Scenes/Room 2.unity", LoadSceneMode.Single);
+            SpawnManager.spawnPosition = targetPosition;
+            SceneManager.LoadScene("Room 2");
         }
     }
 }

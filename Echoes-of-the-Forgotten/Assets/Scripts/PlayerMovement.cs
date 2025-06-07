@@ -6,6 +6,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform orientation; 
 
     private CharacterController controller;
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
