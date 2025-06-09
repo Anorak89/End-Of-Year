@@ -125,6 +125,16 @@ namespace NavKeypad
             onAccessGranted?.Invoke();
             panelMesh.material.SetVector("_EmissionColor", screenGrantedColor * screenIntensity);
             audioSource.PlayOneShot(accessGrantedSfx);
+            GameObject wall = GameObject.Find("Wall");
+            GameObject keypad = GameObject.Find("Keypad");
+            if (wall != null)
+            {
+                Destroy(wall);
+            }
+            if (keypad != null)
+            {
+                Destroy (keypad);
+            }
         }
 
     }
