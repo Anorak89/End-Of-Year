@@ -610,12 +610,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  orientation: {fileID: 402183651}
-  gravity: -9.81
+  jumpHeight: 2
+  gravity: -50
   groundCheckDistance: 0.4
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
+  orientation: {fileID: 402183651}
 --- !u!1 &406918635
 GameObject:
   m_ObjectHideFlags: 0
