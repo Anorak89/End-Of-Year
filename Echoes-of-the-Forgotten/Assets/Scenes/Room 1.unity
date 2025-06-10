@@ -615,7 +615,7 @@ MonoBehaviour:
   groundCheckDistance: 0.4
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   orientation: {fileID: 402183651}
 --- !u!1 &406918635
 GameObject:
