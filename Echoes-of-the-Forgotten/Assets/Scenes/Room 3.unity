@@ -2819,8 +2819,52 @@ MonoBehaviour:
   - {fileID: 1770243255}
   - {fileID: 2044176676}
   - {fileID: 1822416815}
+  - {fileID: 1822416815}
+  - {fileID: 350303634}
+  - {fileID: 1138509424}
+  - {fileID: 1669416829}
+  - {fileID: 1730237065}
+  - {fileID: 1669416829}
+  - {fileID: 1122148613}
+  - {fileID: 1270708228}
+  - {fileID: 1854756142}
+  - {fileID: 1179411806}
+  - {fileID: 73508583}
+  - {fileID: 1179411806}
+  - {fileID: 1854756142}
+  - {fileID: 1270708228}
+  - {fileID: 2059138523}
+  - {fileID: 954335609}
+  - {fileID: 1028650012}
+  - {fileID: 1571057668}
+  - {fileID: 744347863}
+  - {fileID: 1131989505}
+  - {fileID: 372167865}
+  - {fileID: 1131989505}
+  - {fileID: 744347863}
+  - {fileID: 1256685052}
+  - {fileID: 126687466}
+  - {fileID: 1256685052}
+  - {fileID: 744347863}
+  - {fileID: 1571057668}
+  - {fileID: 1028650012}
+  - {fileID: 954335609}
+  - {fileID: 360189795}
+  - {fileID: 532182459}
+  - {fileID: 360189795}
+  - {fileID: 954335609}
+  - {fileID: 2059138523}
+  - {fileID: 1122148613}
+  - {fileID: 1138509424}
+  - {fileID: 350303634}
+  - {fileID: 2079771170}
+  - {fileID: 955601479}
+  - {fileID: 2079771170}
+  - {fileID: 1822416815}
+  - {fileID: 2044176676}
+  - {fileID: 1770243255}
   targetPoint: 0
-  speed: 40
+  speed: 500
   rotationSpeed: 5
 --- !u!1 &471487154
 GameObject:
