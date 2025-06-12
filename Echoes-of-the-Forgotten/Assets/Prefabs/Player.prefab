@@ -159,6 +159,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   orientation: {fileID: 1568109556472686321}
+  hasRedKey: 0
+  hasBlueKey: 0
 --- !u!1 &3982239177497172868
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a64dc5f005d9f438d5d00a0584b16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 800
+  mouseSensitivity: 400
   playerBody: {fileID: 1568109556472686321}
 --- !u!114 &7350485898187332030
 MonoBehaviour:
