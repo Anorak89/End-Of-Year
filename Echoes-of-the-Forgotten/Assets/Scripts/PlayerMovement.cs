@@ -13,6 +13,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
 
+    // 🔑 Key Inventory
+    public bool hasRedKey = false;
+    public bool hasBlueKey = false;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
