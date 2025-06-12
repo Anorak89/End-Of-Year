@@ -148,7 +148,7 @@ namespace NavKeypad
 
             if (wall != null)
             {
-                StartCoroutine(DestroyWallWithEffect(wall));
+                Destroy(wall);
             }
 
             if (keypad != null)
