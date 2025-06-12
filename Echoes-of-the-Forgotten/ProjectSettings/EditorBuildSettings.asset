@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jumpscare.unity
     guid: d408c41e9c9f8c44d8deee0ba4359398
+  - enabled: 1
+    path: Assets/Scenes/CutRoom 2.unity
+    guid: a557168cdb1ebcf40b66d2bca360d257
+  - enabled: 1
+    path: Assets/Scenes/FinRoom 2.unity
+    guid: b9e0f543c5204664db555c5a5efffc04
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
