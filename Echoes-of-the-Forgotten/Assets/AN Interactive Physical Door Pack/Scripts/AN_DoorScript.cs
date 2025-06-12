@@ -1,110 +1,88 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AN_DoorScript : MonoBehaviour
 {
-    [Tooltip("If it is false door can't be used")]
+    [Header("Basic Door Settings")]
     public bool Locked = false;
-    [Tooltip("It is true for remote control only")]
     public bool Remote = false;
-    [Space]
-    [Tooltip("Door can be opened")]
     public bool CanOpen = true;
-    [Tooltip("Door can be closed")]
     public bool CanClose = true;
-    [Space]
-    [Tooltip("Door locked by red key (use key script to declarate any object as key)")]
+
+    [Header("Key Locks")]
     public bool RedLocked = false;
     public bool BlueLocked = false;
-    [Tooltip("It is used for key script working")]
-    PlayerMovement player;
-    [Space]
+
+    private PlayerMovement player;
+
+    [Header("Door State")]
     public bool isOpened = false;
     [Range(0f, 4f)]
-    [Tooltip("Speed for door opening, degrees per sec")]
-    public float OpenSpeed = 3f;
+    public float OpenSpeed = 2f;
 
-    // NearView()
-    float distance;
-    float angleView;
-    Vector3 direction;
-
-    // Hinge
-    [HideInInspector]
-    public Rigidbody rbDoor;
-    HingeJoint hinge;
-    JointLimits hingeLim;
-    float currentLim;
+    private Quaternion closedRotation;
+    private Quaternion targetRotation;
+    private bool isRotating = false;
 
     void Start()
     {
-        rbDoor = GetComponent<Rigidbody>();
-        hinge = GetComponent<HingeJoint>();
         player = FindObjectOfType<PlayerMovement>();
+        closedRotation = transform.rotation;
+
+        // Instead of hardcoding -90, rotate 90 degrees from current Y
+        Vector3 openEuler = transform.eulerAngles + new Vector3(0f, -90f, 0f);
+        targetRotation = Quaternion.Euler(openEuler);
     }
 
     void Update()
     {
-        if ( !Remote && Input.GetKeyDown(KeyCode.E) && NearView() )
+        if (!Remote && Input.GetKeyDown(KeyCode.E) && NearView() && !isOpened)
+        {
             Action();
-        
+        }
+
+        if (isRotating)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, OpenSpeed * 100f * Time.deltaTime);
+
+            if (Quaternion.Angle(transform.rotation, targetRotation) < 0.5f)
+            {
+                transform.rotation = targetRotation;
+                isRotating = false;
+            }
+        }
     }
 
     public void Action()
-{
-    if (!Locked)
     {
-        // key lock checking
-        if (player != null && RedLocked && player.hasRedKey)
+        if (Locked || isOpened) return;
+
+        // Unlock with key
+        if (RedLocked && player != null && player.hasRedKey)
         {
             RedLocked = false;
             player.hasRedKey = false;
         }
-        else if (player != null && BlueLocked && player.hasBlueKey)
+
+        if (BlueLocked && player != null && player.hasBlueKey)
         {
             BlueLocked = false;
             player.hasBlueKey = false;
         }
 
-        // opening/closing
-        if (isOpened && CanClose && !RedLocked && !BlueLocked)
-        {
-            isOpened = false;
-        }
-        else if (!isOpened && CanOpen && !RedLocked && !BlueLocked)
+        if (!RedLocked && !BlueLocked && CanOpen)
         {
             isOpened = true;
-            rbDoor.AddRelativeTorque(new Vector3(0, 0, 20f));
+            isRotating = true;
         }
     }
-}
 
-    bool NearView() // it is true if you near interactive object
+    bool NearView()
     {
-        distance = Vector3.Distance(transform.position, Camera.main.transform.position);
-        direction = transform.position - Camera.main.transform.position;
-        angleView = Vector3.Angle(Camera.main.transform.forward, direction);
-        if (distance < 3f) return true; // angleView < 35f && 
-        else return false;
-    }
-
-    private void FixedUpdate() // door is physical object
-    {
-        if (isOpened)
-        {
-            currentLim = 85f;
-        }
-        else
-        {
-            // currentLim = hinge.angle; // door will closed from current opened angle
-            if (currentLim > 1f)
-                currentLim -= .5f * OpenSpeed;
-        }
-
-        // using values to door object
-        hingeLim.max = currentLim;
-        hingeLim.min = -currentLim;
-        hinge.limits = hingeLim;
+        float distance = Vector3.Distance(transform.position, Camera.main.transform.position);
+        Vector3 direction = transform.position - Camera.main.transform.position;
+        float angleView = Vector3.Angle(Camera.main.transform.forward, direction);
+        return distance < 3f;
     }
 }
