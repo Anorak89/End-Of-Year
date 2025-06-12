@@ -6,6 +6,6 @@ public class Door_Teleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("Room 1");
+        SceneManager.LoadScene("End");
     }
 }
