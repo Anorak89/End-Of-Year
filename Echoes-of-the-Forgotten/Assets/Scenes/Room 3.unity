@@ -2863,7 +2863,7 @@ MonoBehaviour:
   - {fileID: 2044176676}
   - {fileID: 1770243255}
   targetPoint: 0
-  speed: 500
+  speed: 10
   rotationSpeed: 5
 --- !u!114 &464247045
 MonoBehaviour:
