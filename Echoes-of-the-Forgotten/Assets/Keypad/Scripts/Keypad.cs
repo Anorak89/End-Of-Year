@@ -118,6 +118,24 @@ namespace NavKeypad
             keypadDisplayText.text = currentInput;
         }
 
+        IEnumerator DestroyWallWithEffect(GameObject wall)
+        {
+            float duration = 1.0f; 
+            float elapsed = 0f;
+            Vector3 originalScale = wall.transform.localScale;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+                wall.transform.localScale = Vector3.Lerp(originalScale, Vector3.zero, t);
+                yield return null;
+            }
+
+            Destroy(wall);
+        }
+
+
         private void AccessGranted()
         {
             accessWasGranted = true;
@@ -127,13 +145,15 @@ namespace NavKeypad
             audioSource.PlayOneShot(accessGrantedSfx);
             GameObject wall = GameObject.Find("Wall");
             GameObject keypad = GameObject.Find("Keypad");
+
             if (wall != null)
             {
-                Destroy(wall);
+                StartCoroutine(DestroyWallWithEffect(wall));
             }
+
             if (keypad != null)
             {
-                Destroy (keypad);
+                Destroy(keypad);
             }
         }
 
