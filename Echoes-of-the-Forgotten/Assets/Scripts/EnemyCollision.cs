@@ -9,7 +9,7 @@ public class EnemyCollision : MonoBehaviour
         if (player != null)
         {
             Debug.Log("Player collided with enemy. Loading 'Jumpscare' scene...");
-            SceneManager.LoadScene("Jumpscare");
+            SceneManager.LoadScene("Jumpscare-Room3");
         }
     }
 }
