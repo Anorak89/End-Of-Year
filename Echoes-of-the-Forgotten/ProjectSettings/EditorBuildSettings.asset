@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jumpscare-Room3.unity
     guid: 521dccdff5328244cb19bd1a533a0700
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: d8c0a91a8c39b994a80badf02329d752
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
