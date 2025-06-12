@@ -544,7 +544,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e9e644d9f4c4948b21fc210494b636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Room 1
+  sceneToLoad: Room 2
+  delayBeforeLoad: 0.2
+  playerTag: Player
 --- !u!1 &279282963
 GameObject:
   m_ObjectHideFlags: 0
